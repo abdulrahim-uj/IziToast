@@ -52,15 +52,17 @@ def func(request):
             {
                 'tag': 'danger',
                 'item': "Error message!"
-            } 
-        ],
+            }
+        ]
+    }
+    diversify = {
         "position": "topRight",
         "transition_in": "flipInX",
         "transition_out": "flipOutX",
         "time_out": 3000,
     }
 
-    izitoast(request=request, model="success", message=message)
+    izitoast(request=request, model="success", message=message, diversify=diversify)
 
     return render(request, 'template.html')
 ```
@@ -72,11 +74,24 @@ from izitoast.functions import izitoast
 def func(request):
     ...
     
-
-    izitoast(request=request, model="danger", message=form.errors)
+    diversify = {
+        "position": "topRight",
+        "transition_in": "flipInX",
+        "transition_out": "flipOutX",
+        "time_out": 3000,
+    }
+    izitoast(request=request, model="form-error", message=form.errors, diversify=diversify)
 
     return render(request, 'template.html')
 ```
+
+
+## model
+
+Users can choose different models and it can be 'success', 'info', 'warning', or 'danger'. 
+
+but when generating form.errors must be set to 'model=form-error'.
+
 
 ## Optionals
 1. position: 
