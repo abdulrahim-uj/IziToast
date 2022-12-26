@@ -29,7 +29,26 @@ inside base template file at last position include a single line of code
 ```
 
 ## Working
+- User can pass diversify or not, if not pass diversify izitoast will take default settings
+- Single message with specified tag
+```python
+from izitoast.functions import izitoast
 
+def func(request):
+    ...
+    message = "This is success message."
+    diversify = {
+        "position": "topRight",
+        "transition_in": "flipInX",
+        "transition_out": "flipOutX",
+        "time_out": 3000,
+    }
+
+    izitoast(request=request, model="success", message=message, diversify=diversify)
+
+    return render(request, 'template.html')
+```
+- Multiple messages with different tags at a time
 ```python
 from izitoast.functions import izitoast
 
@@ -88,38 +107,38 @@ def func(request):
 
 ## model
 
-Users can choose different models and it can be 'success', 'info', 'warning', or 'danger'. 
+- Users can choose different models and it can be 'success', 'info', 'warning', or 'danger'. 
 
-but when generating form.errors must be set to 'model=form-error'.
+- but when generating form.errors must be set to 'model=form-error'.
 
 
 ## Optionals
 1. position: 
 
- Default izitoast shown place "topRight",
+ - Default izitoast shown place "topRight",
 
- It can be: [bottomRight, bottomLeft, topRight, topLeft, topCenter, bottomCenter, center]
+ - It can be: [bottomRight, bottomLeft, topRight, topLeft, topCenter, bottomCenter, center]
 
 2. transition_in:
 
- Default izitoast open animation "flipInX",
+ - Default izitoast open animation "flipInX",
 
- It can be: [bounceInLeft, bounceInRight, bounceInUp, bounceInDown, fadeIn, fadeInDown, fadeInUp, fadeInLeft, fadeInRight, flipInX]
+ - It can be: [bounceInLeft, bounceInRight, bounceInUp, bounceInDown, fadeIn, fadeInDown, fadeInUp, fadeInLeft, fadeInRight, flipInX]
 
 3. transition_out:
- Default izitoast close animation "flipOutX",
+ - Default izitoast close animation "flipOutX",
 
- It can be: [fadeOut, fadeOutUp, fadeOutDown, fadeOutLeft, fadeOutRight, flipOutX]
+ - It can be: [fadeOut, fadeOutUp, fadeOutDown, fadeOutLeft, fadeOutRight, flipOutX]
 
 4. time_out:
- the default value is 3000.
+  - the default value is 3000.
 
 
 ## Dependencies
 
-It uses [izitoast v1.4.0](https://izitoast.marcelodolza.com/) scripts and styles.
+ - It uses [izitoast v1.4.0](https://izitoast.marcelodolza.com/) scripts and styles.
 
-For message transferring uses messages 
+#### For message transferring uses messages 
 ```python 
 from django.contrib import messages
 ```
